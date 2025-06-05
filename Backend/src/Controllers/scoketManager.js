@@ -17,6 +17,8 @@ export const connectTosocket = (server) => {
     }})
 
     io.on("connection", (socket) => {
+        console.log("New user connected");
+
         socket.on("join-call", (path) => {
             if (connections[path] === undefined) {
                 connections[path] = []
@@ -27,7 +29,7 @@ export const connectTosocket = (server) => {
 
                 for (let i = 0; i < connections[path].length; i++) {
 
-                    io.to(connections[path][i]).emit("user-joined", socket.id)
+                    io.to(connections[path][i]).emit("user-joined", socket.id) 
                 }
                 if (messages[path] !== undefined) {
                     for (let i = 0; i < messages[path].length; i++) {
@@ -71,7 +73,7 @@ export const connectTosocket = (server) => {
         socket.on("disconnect", () => {
             var diffTime = Math.abs(Date.now() - timeOnline[socket.id]);
             for (const [k, v] of JSON.parse(JSON.stringify(Object.entries(connections)))) {
-                for (let i = 0; i < value.length; i++) {
+                for (let i = 0; i < v.length; i++) {
                     if (v[i] === socket.id) {
                         key = k;
                         for (let j = 0; j < connections[key].length; j++) {

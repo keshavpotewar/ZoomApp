@@ -1,7 +1,7 @@
 import React from 'react'
 import "../App.css"
 import { Link, useNavigate } from 'react-router-dom'
-import "./Landing.css"
+import "../styles/Landing.css"
 export default function LandingPage() {
 
 
@@ -15,7 +15,7 @@ export default function LandingPage() {
                 </div>
                 <div className='navlist'>
                     <p onClick={() => {
-                        router("/aljk23") 
+                        router("/abcd") 
                     }}>Join as Guest</p>
                     <p onClick={() => {
                         router("/auth")
